@@ -43,4 +43,5 @@
     }
     
     init();
+console.log("index.js");
     

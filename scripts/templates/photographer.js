@@ -15,3 +15,5 @@ function photographerTemplate(data) {
     }
     return { name, picture, getUserCardDOM }
 }
+
+console.log("test page photographer.js");
