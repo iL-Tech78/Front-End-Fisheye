@@ -2,5 +2,9 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+\*1
+Le rôle de la Factory Method est de créer un objet personnalisé qui
+encapsule les informations du photographe et fournit des
+méthodes spécifiques pour interagir avec ces données.
 
+Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
