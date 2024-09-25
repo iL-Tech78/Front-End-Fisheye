@@ -8,6 +8,10 @@ function photographerFactory(data) {
         const article = document.createElement('article');
         article.setAttribute('aria-label', `Profil de ${name}`);
 
+        const link = document.createElement('a');
+        link.setAttribute('href', `photographer.html?id=${data.id}`);
+        link.setAttribute('aria-label', `Voir la page de ${name}`);
+
         const img = document.createElement('img');
         img.setAttribute('src', picture);
         img.setAttribute('alt', `Portrait de ${name}`);
@@ -34,14 +38,16 @@ function photographerFactory(data) {
         pricing.setAttribute('aria-label', `Prix: ${price} euros par jour`);
         pricing.classList.add('price__photographer');
 
-
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(location);
         article.appendChild(description);
         article.appendChild(pricing);
 
-        return article;
+        // J'insère tout dans le lien
+        link.appendChild(article);
+
+        return link;
     }
 
 
