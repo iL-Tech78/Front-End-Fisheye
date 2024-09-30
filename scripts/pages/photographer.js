@@ -90,6 +90,8 @@ async function displayPhotographerData() {
         displayPhotographerHeader(photographer);
         displayMediaGallery(media, photographer.name);
         displayPriceBox(photographer);
+        // Mettre à jour le titre de la modale avec le nom du photographe
+        updateModalTitle(photographer.name);
     } else {
         console.error('Photographe non trouvé');
     }
