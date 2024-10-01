@@ -82,6 +82,26 @@ function displayPriceBox(photographer) {
     priceBox.appendChild(price);
 }
 
+// Fonction pour afficher la galerie de médias
+function displayMediaGallery(mediaDataArray, photographerName) {
+    const mediaSection = document.querySelector('.media_section');
+    mediaArray = []; // Réinitialiser le tableau des médias
+  
+    mediaDataArray.forEach((mediaData, index) => {
+      const mediaModel = mediaFactory(mediaData, photographerName);
+      const mediaCardDOM = mediaModel.getMediaCardDOM(index);
+      mediaSection.appendChild(mediaCardDOM);
+  
+      // Ajouter le média au tableau mediaArray pour la Lightbox
+      mediaArray.push({
+        mediaPath: mediaModel.mediaPath,
+        title: mediaModel.title,
+        image: mediaModel.image,
+        video: mediaModel.video
+      });
+    });
+}
+
 // Fonction principale pour afficher les données du photographe
 async function displayPhotographerData() {
     const { photographer, media } = await getPhotographerData(photographerId);
