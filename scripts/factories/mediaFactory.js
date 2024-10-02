@@ -87,5 +87,3 @@ function mediaFactory(mediaData, photographerName) {
   
     return { id, title, mediaPath, image, video, likes, getMediaCardDOM };
 }
-  
-  
