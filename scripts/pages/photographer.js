@@ -71,14 +71,32 @@ function displayMediaGallery(mediaArray, photographerName) {
     });
 }
 
-// Fonction pour afficher la boîte de tarif journalier
-function displayPriceBox(photographer) {
+// Fonction pour afficher la boîte de tarif journalier avec le total des likes
+function displayPriceBox(photographer, totalLikes) {
     const priceBox = document.querySelector('.price-box');
-
+  
+    // Vider le contenu précédent
+    priceBox.innerHTML = '';
+  
+    const likesContainer = document.createElement('div');
+    likesContainer.classList.add('likes-container');
+  
+    const totalLikesElement = document.createElement('p');
+    totalLikesElement.setAttribute('id', 'total-likes');
+    totalLikesElement.textContent = totalLikes;
+  
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('fas', 'fa-heart');
+    heartIcon.setAttribute('aria-label', 'Total des likes');
+  
+    likesContainer.appendChild(totalLikesElement);
+    likesContainer.appendChild(heartIcon);
+  
     const price = document.createElement('p');
     price.textContent = `${photographer.price}€ / jour`;
     price.classList.add('price-text');
-
+  
+    priceBox.appendChild(likesContainer);
     priceBox.appendChild(price);
 }
 
@@ -102,11 +120,27 @@ function displayMediaGallery(mediaDataArray, photographerName) {
     });
 }
 
+// Variable pour stocker le total des likes
+let totalLikes = 0;
+
+// Fonction pour calculer le total des likes
+function calculateTotalLikes(mediaArray) {
+  return mediaArray.reduce((total, media) => total + media.likes, 0);
+}
+
+// Fonction pour mettre à jour le total des likes
+function updateTotalLikes(change) {
+  totalLikes += change;
+  const totalLikesElement = document.getElementById('total-likes');
+  totalLikesElement.textContent = totalLikes;
+}
+
 // Fonction principale pour afficher les données du photographe
 async function displayPhotographerData() {
     const { photographer, media } = await getPhotographerData(photographerId);
 
     if (photographer) {
+        totalLikes = calculateTotalLikes(media);
         displayPhotographerHeader(photographer);
         displayMediaGallery(media, photographer.name);
         displayPriceBox(photographer);

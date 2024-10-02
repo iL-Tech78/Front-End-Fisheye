@@ -292,3 +292,54 @@ form .contact_button {
     text-align: left;
 }
   
+.like-container {
+    display: flex;
+    align-items: center;
+}
+
+.likes-count {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #901C1C;
+    font-size: 18px;
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+.price-box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.likes-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.likes-container i {
+    margin-left: 5px;
+    color: #000000;
+}
+
+.price-text {
+    font-size: 24px;
+    margin: 0;
+}
+.like-button.liked {
+    color: #D3573C;
+}  

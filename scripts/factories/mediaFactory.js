@@ -51,16 +51,41 @@ function mediaFactory(mediaData, photographerName) {
       const mediaTitle = document.createElement('h3');
       mediaTitle.textContent = title;
   
+      const likeContainer = document.createElement('div');
+      likeContainer.classList.add('like-container');
+      
       const mediaLikes = document.createElement('p');
-      mediaLikes.textContent = `${likes} ♥`;
+      mediaLikes.textContent = likes;
+      mediaLikes.classList.add('likes-count');
   
+      const likeButton = document.createElement('button');
+      likeButton.classList.add('like-button');
+      likeButton.setAttribute('aria-label', 'Ajouter un like');
+      likeButton.innerHTML = '<i class="fas fa-heart" aria-hidden="true"></i>';
+  
+      likeContainer.appendChild(mediaLikes);
+      likeContainer.appendChild(likeButton);
+  
+      // Ajouter l'événement pour gérer le like
+      let isLiked = false;
+      likeButton.addEventListener('click', () => {
+        if (!isLiked) {
+          mediaLikes.textContent = parseInt(mediaLikes.textContent) + 1;
+          updateTotalLikes(1);
+          isLiked = true;
+          likeButton.classList.add('liked');
+          likeButton.setAttribute('aria-label', 'Vous avez aimé ce média');
+        }
+      });
+
       mediaInfo.appendChild(mediaTitle);
-      mediaInfo.appendChild(mediaLikes);
+      mediaInfo.appendChild(likeContainer);
       article.appendChild(mediaInfo);
   
       return article;
     }
   
-    return { id, title, mediaPath, image, video, getMediaCardDOM };
-  }
+    return { id, title, mediaPath, image, video, likes, getMediaCardDOM };
+}
+  
   
